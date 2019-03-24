@@ -1,28 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+/** @jsx jsx */
 
-class App extends Component {
-  render() {
+import {jsx} from '@emotion/core';
+import Grid from "./components/Grid";
+import useWindowWidth from "./hooks/useWindowWidth";
+import gridItems from './data/gridItems';
+
+function App() {
+    const width = useWindowWidth();
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+        <div>
+            <Grid width={width} items={gridItems.items} />
+        </div>
+    )
 }
 
 export default App;
