@@ -4,18 +4,17 @@ import {jsx, css} from '@emotion/core';
 
 const containerCss = css`
     color: #ccc;
-    background-size: contain;
-    border-left: 2px solid #fff;
+    border-left: 2px solid transparent;
     &:first-of-type {
       border-left: 0;
     }
 `;
 
-function GridItem({width, backgroundUrl}) {
-    const backgroundCss = css({backgroundImage: `url('${backgroundUrl}')`});
-
+function GridItem({width, item}) {
     return (
-        <div css={[containerCss, {width, height: 1.2 * width}, backgroundCss]}/>
+        <div css={[containerCss, {width, height: 1.2 * width}]}>
+            {item}
+        </div>
     );
 }
 

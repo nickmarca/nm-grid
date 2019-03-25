@@ -1,5 +1,6 @@
 /** @jsx jsx */
 
+import {Children} from 'react';
 import {jsx, css} from '@emotion/core';
 import GridRow from './GridRow';
 import useMedia from "../hooks/useMedia";
@@ -25,13 +26,13 @@ function split(items, maxRowItems) {
     return items.reduce(reducer, [[]]);
 }
 
-function Grid({width, items}) {
+function Grid({width, items, children}) {
     const xs = useMedia("(min-width: 576px)");
     const md = useMedia("(min-width: 768px)");
     const lg = useMedia("(min-width: 992px)");
 
     const maxRowItems = lg ? 7 : md ? 5 : xs ? 3 : 1;
-    const rows = split(items, maxRowItems);
+    const rows = split(Children.map(children, child => child), maxRowItems);
 
     return (
         <div css={[containerCss, {width}]}>

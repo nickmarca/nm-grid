@@ -17,7 +17,7 @@ function GridRow({items, itemWidth}) {
     return (
         <div css={containerCss}>
             {
-                items.map((item, i) => <GridItem {...item} width={itemWidth} key={i + ''} />)
+                items.map((item, i) => <GridItem item={item} width={itemWidth} key={i + ''} />)
             }
         </div>
     );
